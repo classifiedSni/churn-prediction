@@ -1,0 +1,16 @@
+{
+  "model_type": "LightGBMClassifier",
+  "training_date": "2023-09-30",
+  "observation_cutoff": "2023-09-30",
+  "n_features": 49,
+  "n_train_samples": 4042,
+  "n_test_samples": 3001,
+  "train_churn_rate": 0.3738,
+  "test_churn_rate": 0.1193,
+  "roc_auc": 0.9976,
+  "avg_precision": 0.9816,
+  "top_decile_lift": 8.19,
+  "optimal_threshold_pct": 15,
+  "max_net_roi": 143640,
+  "best_iteration": 110
+}

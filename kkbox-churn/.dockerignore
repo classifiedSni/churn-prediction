@@ -1,0 +1,7 @@
+data/
+notebooks/
+__pycache__/
+*.pyc
+.DS_Store
+src/mlruns/
+src/mlflow.db

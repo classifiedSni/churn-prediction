@@ -1,0 +1,7 @@
+{
+  "model_type": "LogisticRegression",
+  "roc_auc": 0.9819,
+  "avg_precision": 0.91,
+  "top_decile_lift": 7.3,
+  "notes": "Requires StandardScaler \u2014 load scaler.pkl before predicting"
+}

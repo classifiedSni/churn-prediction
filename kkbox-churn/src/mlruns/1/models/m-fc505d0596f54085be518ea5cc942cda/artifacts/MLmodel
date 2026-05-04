@@ -1,0 +1,22 @@
+artifact_path: /Users/siddharthm/Desktop/churn-prediction/kkbox-churn/src/mlruns/1/models/m-fc505d0596f54085be518ea5cc942cda/artifacts
+flavors:
+  python_function:
+    data: model.ubj
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.xgboost
+    python_version: 3.13.7
+  xgboost:
+    code: null
+    data: model.ubj
+    model_class: xgboost.sklearn.XGBClassifier
+    model_format: ubj
+    xgb_version: 3.2.0
+mlflow_version: 3.11.1
+model_id: m-fc505d0596f54085be518ea5cc942cda
+model_size_bytes: 1795212
+model_uuid: m-fc505d0596f54085be518ea5cc942cda
+prompts: null
+run_id: a9caded9836f4c519bdd92768e11389e
+utc_time_created: '2026-04-21 16:53:22.778880'

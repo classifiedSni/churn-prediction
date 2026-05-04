@@ -1,0 +1,8 @@
+{
+  "model_type": "XGBClassifier",
+  "roc_auc": 0.998,
+  "avg_precision": 0.9856,
+  "top_decile_lift": 8.24,
+  "best_iteration": 177,
+  "notes": "No scaling needed \u2014 tree model"
+}

@@ -1,0 +1,14 @@
+{
+  "model": "LightGBM",
+  "roc_auc": 0.9686,
+  "f1": 0.8191,
+  "recall": 0.8298,
+  "precision": 0.8087,
+  "optimal_threshold": 0.8226,
+  "n_features": 34,
+  "train_churn_rate": 0.1043,
+  "test_churn_rate": 0.0314,
+  "split_method": "temporal (days_since_last_txn)",
+  "leakage_removed": "days_until_expiry dropped",
+  "best_iteration": 1000
+}

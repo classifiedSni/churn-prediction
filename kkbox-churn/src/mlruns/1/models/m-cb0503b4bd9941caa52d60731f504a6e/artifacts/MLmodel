@@ -1,0 +1,23 @@
+artifact_path: /Users/siddharthm/Desktop/churn-prediction/kkbox-churn/src/mlruns/1/models/m-cb0503b4bd9941caa52d60731f504a6e/artifacts
+flavors:
+  lightgbm:
+    code: null
+    data: model.pkl
+    lgb_version: 4.6.0
+    model_class: lightgbm.sklearn.LGBMClassifier
+    serialization_format: cloudpickle
+    skops_trusted_types: null
+  python_function:
+    data: model.pkl
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.lightgbm
+    python_version: 3.13.7
+mlflow_version: 3.11.1
+model_id: m-cb0503b4bd9941caa52d60731f504a6e
+model_size_bytes: 3484457
+model_uuid: m-cb0503b4bd9941caa52d60731f504a6e
+prompts: null
+run_id: 54dd82008c7244378b11175e975205fd
+utc_time_created: '2026-04-21 16:53:05.341420'

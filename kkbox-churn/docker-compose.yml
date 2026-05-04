@@ -1,0 +1,17 @@
+services:
+  kkbox-api:
+    build: .
+    image: kkbox-churn-api:latest
+    container_name: kkbox-churn-api
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./models:/app/models
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3

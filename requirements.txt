@@ -1,0 +1,20 @@
+# API dependencies
+fastapi==0.111.0
+uvicorn==0.29.0
+pydantic==2.7.0
+
+# ML dependencies
+lightgbm==4.3.0
+xgboost==2.0.3
+scikit-learn==1.4.2
+numpy==1.26.4
+joblib==1.4.2
+pandas==2.2.2
+
+# Dev / notebook dependencies (not needed in Docker, kept for local use)
+scipy>=1.10.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+jupyter>=1.0.0
+ipykernel>=6.25.0
+shap>=0.45.0

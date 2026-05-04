@@ -1,0 +1,30 @@
+# Data files (too large, not needed in container)
+data/
+
+# Notebooks
+notebooks/
+src/*.ipynb
+src/api.ipynb
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Git
+.git/
+.gitignore
+
+# Logs
+logs/
+
+# Mac
+.DS_Store
+
+# Tests (optional, include if you want to run tests in container)
+tests/

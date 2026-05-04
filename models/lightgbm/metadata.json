@@ -1,0 +1,8 @@
+{
+  "model_type": "LightGBMClassifier",
+  "roc_auc": 0.9976,
+  "avg_precision": 0.9816,
+  "top_decile_lift": 8.19,
+  "best_iteration": 110,
+  "notes": "No scaling needed \u2014 tree model"
+}
