@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 840 800" xmlns="http://www.w3.org/2000/svg" role="img" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>KKBox churn prediction end-to-end pipeline</title>
+  <desc>Animated diagram of the real pipeline: raw KKBox tables are merged per user, 34 features are engineered and joined to the Kaggle-provided is_churn label, a leakage-safe temporal split is applied, three models (Logistic Regression, XGBoost, LightGBM) are trained and tracked in MLflow, LightGBM is selected as best (AUC 0.969), feature importance is computed, and the model is served via FastAPI and Docker to produce churn probabilities.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1220"/>
+      <stop offset="1" stop-color="#131c2e"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#38bdf8"/></marker>
+    <marker id="arrowAmber" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#fbbf24"/></marker>
+    <marker id="arrowViolet" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#a78bfa"/></marker>
+    <style>
+      .box { fill:#1b2740; stroke:#314463; stroke-width:1.5; }
+      .src { fill:#16213a; stroke:#2b3c5a; stroke-width:1.5; }
+      .lp  { fill:#e6edf7; font-weight:600; }
+      .ls  { fill:#8ea3c2; }
+      .conn { stroke:#38bdf8; stroke-width:2; fill:none; stroke-dasharray:7 7; animation: march 0.9s linear infinite; }
+      .connV { stroke:#a78bfa; }
+      .connA { stroke:#fbbf24; }
+      @keyframes march { to { stroke-dashoffset:-14; } }
+      .glow { fill:none; stroke:#38bdf8; stroke-width:2.5; opacity:0; animation: pulse 7s ease-in-out infinite; }
+      .glowG { stroke:#34d399; }
+      .glowA { stroke:#fbbf24; }
+      .glowV { stroke:#a78bfa; }
+      @keyframes pulse { 0%,9%,100%{opacity:0;} 3%{opacity:1;} 6%{opacity:0.15;} }
+      .dot { fill:#7dd3fc; }
+      #root { animation: fade 0.8s ease-out both; }
+      @keyframes fade { from{opacity:0;} to{opacity:1;} }
+    </style>
+  </defs>
+
+  <g id="root">
+  <rect x="2" y="2" width="836" height="796" rx="20" fill="url(#bg)" stroke="#1f2c45" stroke-width="1.5"/>
+
+  <text x="34" y="46" class="lp" font-size="22">KKBox Churn Prediction — End-to-End Pipeline</text>
+  <text x="34" y="68" class="ls" font-size="13">Raw KKBox tables, leakage-safe split, 3-model bake-off, served API</text>
+
+  <text x="34" y="98"  fill="#52617f" font-size="11" font-weight="700" letter-spacing="2">DATA</text>
+  <text x="34" y="277" fill="#52617f" font-size="11" font-weight="700" letter-spacing="2">PREP &amp; SPLIT</text>
+  <text x="34" y="502" fill="#52617f" font-size="11" font-weight="700" letter-spacing="2">MODELING</text>
+  <text x="34" y="681" fill="#52617f" font-size="11" font-weight="700" letter-spacing="2">DEPLOY</text>
+
+  <!-- DATA -> Merge -->
+  <path class="conn" d="M154,128 Q154,150 340,158" marker-end="url(#arrow)"/>
+  <path class="conn" d="M420,128 L420,158" marker-end="url(#arrow)"/>
+  <path class="conn" d="M686,128 Q686,150 500,158" marker-end="url(#arrow)"/>
+
+  <!-- main spine -->
+  <line class="conn" x1="420" y1="216" x2="420" y2="248" marker-end="url(#arrow)"/>
+  <line class="conn" x1="420" y1="306" x2="420" y2="338" marker-end="url(#arrow)"/>
+  <line class="conn" x1="420" y1="396" x2="420" y2="428" marker-end="url(#arrow)"/>
+  <line class="conn" x1="420" y1="486" x2="420" y2="518" marker-end="url(#arrow)"/>
+  <line class="conn" x1="420" y1="576" x2="420" y2="606" marker-end="url(#arrow)"/>
+  <line class="conn" x1="420" y1="664" x2="420" y2="696" marker-end="url(#arrow)"/>
+
+  <!-- side connectors -->
+  <line class="conn connA" x1="613" y1="367" x2="582" y2="367" marker-end="url(#arrowAmber)"/>
+  <line class="conn connV" x1="258" y1="457" x2="221" y2="457" marker-end="url(#arrowViolet)"/>
+  <line class="conn connV" x1="582" y1="547" x2="621" y2="547" marker-end="url(#arrowViolet)"/>
+
+  <!-- traveling dots -->
+  <circle class="dot" cx="420" cy="216" r="3.5"><animate attributeName="cy" values="216;248" dur="1.3s" begin="0s" repeatCount="indefinite"/></circle>
+  <circle class="dot" cx="420" cy="306" r="3.5"><animate attributeName="cy" values="306;338" dur="1.3s" begin="0.2s" repeatCount="indefinite"/></circle>
+  <circle class="dot" cx="420" cy="396" r="3.5"><animate attributeName="cy" values="396;428" dur="1.3s" begin="0.4s" repeatCount="indefinite"/></circle>
+  <circle class="dot" cx="420" cy="486" r="3.5"><animate attributeName="cy" values="486;518" dur="1.3s" begin="0.6s" repeatCount="indefinite"/></circle>
+  <circle class="dot" cx="420" cy="576" r="3.5"><animate attributeName="cy" values="576;606" dur="1.3s" begin="0.8s" repeatCount="indefinite"/></circle>
+  <circle class="dot" cx="420" cy="664" r="3.5"><animate attributeName="cy" values="664;696" dur="1.3s" begin="1.0s" repeatCount="indefinite"/></circle>
+
+  <!-- DATA row -->
+  <g>
+    <rect class="glow" x="68" y="68" width="172" height="56" rx="14" style="animation-delay:0s"/>
+    <rect class="src" x="70" y="70" width="168" height="52" rx="12"/>
+    <text x="154" y="93" text-anchor="middle" class="lp" font-size="14">transactions</text>
+    <text x="154" y="110" text-anchor="middle" class="ls" font-size="10.5">plans, renewals</text>
+  </g>
+  <g>
+    <rect class="glow" x="334" y="68" width="172" height="56" rx="14" style="animation-delay:0.2s"/>
+    <rect class="src" x="336" y="70" width="168" height="52" rx="12"/>
+    <text x="420" y="93" text-anchor="middle" class="lp" font-size="14">user_logs</text>
+    <text x="420" y="110" text-anchor="middle" class="ls" font-size="10.5">daily listening</text>
+  </g>
+  <g>
+    <rect class="glow" x="600" y="68" width="172" height="56" rx="14" style="animation-delay:0.4s"/>
+    <rect class="src" x="602" y="70" width="168" height="52" rx="12"/>
+    <text x="686" y="93" text-anchor="middle" class="lp" font-size="14">members</text>
+    <text x="686" y="110" text-anchor="middle" class="ls" font-size="10.5">demographics</text>
+  </g>
+
+  <!-- Merge -->
+  <g>
+    <rect class="glow" x="258" y="156" width="324" height="62" rx="15" style="animation-delay:0.9s"/>
+    <rect class="box" x="260" y="158" width="320" height="58" rx="13"/>
+    <text x="420" y="185" text-anchor="middle" class="lp" font-size="15">Merge to per-user table</text>
+    <text x="420" y="203" text-anchor="middle" class="ls" font-size="11">join on msno: txns + logs + members</text>
+  </g>
+
+  <!-- Feature engineering -->
+  <g>
+    <rect class="glow" x="258" y="246" width="324" height="62" rx="15" style="animation-delay:1.5s"/>
+    <rect class="box" x="260" y="248" width="320" height="58" rx="13"/>
+    <text x="420" y="275" text-anchor="middle" class="lp" font-size="15">Feature engineering</text>
+    <text x="420" y="293" text-anchor="middle" class="ls" font-size="11">34 features, attaches is_churn label</text>
+  </g>
+
+  <!-- Leakage-safe split -->
+  <g>
+    <rect class="glow" x="258" y="336" width="324" height="62" rx="15" style="animation-delay:2.1s"/>
+    <rect class="box" x="260" y="338" width="320" height="58" rx="13"/>
+    <text x="420" y="365" text-anchor="middle" class="lp" font-size="15">Leakage-safe split</text>
+    <text x="420" y="383" text-anchor="middle" class="ls" font-size="11">split 80/20 by days_since_last_txn</text>
+  </g>
+
+  <g>
+    <rect class="glow glowA" x="613" y="339" width="160" height="54" rx="14" style="animation-delay:2.3s"/>
+    <rect class="box" x="615" y="341" width="156" height="50" rx="12" stroke="#a8761f"/>
+    <text x="693" y="363" text-anchor="middle" fill="#fcd34d" font-size="13" font-weight="600">Leakage guard</text>
+    <text x="693" y="379" text-anchor="middle" class="ls" font-size="10">drops days_until_expiry</text>
+  </g>
+
+  <!-- Train 3 models -->
+  <g>
+    <rect class="glow" x="258" y="426" width="324" height="62" rx="15" style="animation-delay:2.7s"/>
+    <rect class="box" x="260" y="428" width="320" height="58" rx="13"/>
+    <text x="420" y="455" text-anchor="middle" class="lp" font-size="15">Train 3 candidate models</text>
+    <text x="420" y="473" text-anchor="middle" class="ls" font-size="11">LR · XGBoost · LightGBM</text>
+  </g>
+  <g>
+    <rect class="glow glowV" x="63" y="429" width="158" height="54" rx="14" style="animation-delay:2.9s"/>
+    <rect class="box" x="65" y="431" width="154" height="50" rx="12" stroke="#7c5fd6"/>
+    <text x="142" y="453" text-anchor="middle" fill="#c4b5fd" font-size="13" font-weight="600">MLflow</text>
+    <text x="142" y="469" text-anchor="middle" class="ls" font-size="10">experiment tracking</text>
+  </g>
+
+  <!-- Best model -->
+  <g>
+    <rect class="glow" x="258" y="516" width="324" height="62" rx="15" style="animation-delay:3.3s"/>
+    <rect class="box" x="260" y="518" width="320" height="58" rx="13"/>
+    <text x="420" y="545" text-anchor="middle" class="lp" font-size="15">Best model: LightGBM</text>
+    <text x="420" y="563" text-anchor="middle" class="ls" font-size="11">AUC 0.969 · threshold 0.823 (max F1)</text>
+  </g>
+  <g>
+    <rect class="glow glowV" x="621" y="519" width="158" height="54" rx="14" style="animation-delay:3.5s"/>
+    <rect class="box" x="623" y="521" width="154" height="50" rx="12" stroke="#7c5fd6"/>
+    <text x="700" y="543" text-anchor="middle" fill="#c4b5fd" font-size="13" font-weight="600">Feature importance</text>
+    <text x="700" y="559" text-anchor="middle" class="ls" font-size="10">LightGBM gain values</text>
+  </g>
+
+  <!-- Serve -->
+  <g>
+    <rect class="glow" x="258" y="604" width="324" height="62" rx="15" style="animation-delay:3.9s"/>
+    <rect class="box" x="260" y="606" width="320" height="58" rx="13"/>
+    <text x="420" y="633" text-anchor="middle" class="lp" font-size="15">Serve predictions</text>
+    <text x="420" y="651" text-anchor="middle" class="ls" font-size="11">FastAPI + Docker · port 8001</text>
+  </g>
+
+  <!-- Final output -->
+  <g>
+    <rect class="glow glowG" x="258" y="694" width="324" height="64" rx="32" style="animation-delay:4.6s"/>
+    <rect x="260" y="696" width="320" height="60" rx="30" fill="#0e2a22" stroke="#34d399" stroke-width="2"/>
+    <text x="420" y="724" text-anchor="middle" fill="#6ee7b7" font-size="15" font-weight="700">Churn probability per user</text>
+    <text x="420" y="742" text-anchor="middle" fill="#3f9c7e" font-size="11">Recall 0.83 · Precision 0.81 · F1 0.82</text>
+  </g>
+  </g>
+</svg>

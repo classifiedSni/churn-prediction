@@ -97,7 +97,7 @@ churn-prediction/
 ### Option 1 — Docker (recommended)
 
 ```bash
-git clone https://github.com/your-username/churn-prediction.git
+git clone https://github.com/classifiedSni/churn-prediction.git
 cd churn-prediction
 docker compose up
 ```

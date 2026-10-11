@@ -90,8 +90,8 @@ kkbox-churn/
 ### Option 1 — Docker (recommended)
 
 ```bash
-git clone https://github.com/your-username/kkbox-churn.git
-cd kkbox-churn
+git clone https://github.com/classifiedSni/churn-prediction.git
+cd churn-prediction/kkbox-churn
 docker compose up
 ```
 
